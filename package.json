@@ -1,0 +1,36 @@
+{
+  "name": "cfn-stack",
+  "main": "index.js",
+  "version": "0.0.0",
+  "description": "CLI for launching CloudFormation stacks using local parameter files",
+  "license": "MIT",
+  "repository": "bendrucker/cfn-stack",
+  "author": {
+    "name": "Ben Drucker",
+    "email": "bvdrucker@gmail.com",
+    "url": "bendrucker.me"
+  },
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "keywords": [
+    "cloudformation",
+    "aws",
+    "cfn",
+    "api"
+  ],
+  "devDependencies": {
+    "tape": "^4.0.0",
+    "standard": "^7.0.0"
+  },
+  "files": [
+    "index.js",
+    "test.js"
+  ],
+  "dependencies": {
+    "aws-sdk": "~2.17.0",
+    "js-yaml": "~3.8.1",
+    "meow": "~3.7.0",
+    "run-waterfall": "~1.1.3"
+  }
+}
