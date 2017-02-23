@@ -91,7 +91,7 @@ test('create', function (t) {
   }
 })
 
-test.only('update', function (t) {
+test('update', function (t) {
   var name = 'cfn-stack-' + cuid()
 
   series([
