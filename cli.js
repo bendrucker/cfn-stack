@@ -34,7 +34,10 @@ waterfall([
   (stack, callback) => setTemplate(stack, options, callback),
   function (stack, callback) {
     sync(stack, options, callback)
-      .on('create', (stack) => console.log(`Created stack ${stack.StackId}`))
+      .on('create', (stack) => console.log(`Created: ${stack.StackId}`))
+      .on('created', (stack) => console.log(`Create complete: ${stack.StackId}`))
+      .on('update', (stack) => console.log(`Update: ${stack.StackId}`))
+      .on('updated', (stack) => console.log(`Update complete: ${stack.StackId}`))
   }
 ], console.log)
 

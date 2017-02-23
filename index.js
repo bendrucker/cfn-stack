@@ -19,15 +19,24 @@ function sync (stack, options, callback) {
   }
 
   var events = new EventEmitter()
+  var operation = options.update ? 'update' : 'create'
 
-  cfn.createStack(params, function (err, data) {
-    if (err) return callback(err)
-    events.emit('create', data)
+  cfn[operation + 'Stack'](params, function (err, data) {
+    if (err) {
+      if (err.code === 'AlreadyExistsException') {
+        return sync(stack, Object.assign({update: true}, options), callback)
+      }
 
-    cfn.waitFor('stackCreateComplete', {StackName: data.StackId}, function (err, data) {
+      return callback(err)
+    }
+
+    events.emit(operation, data)
+
+    var wait = ['stack', options.update ? 'Update' : 'Create', 'Complete'].join('')
+    cfn.waitFor(wait, {StackName: data.StackId}, function (err, data) {
       if (err) return callback(err)
       data = data.Stacks[0]
-      events.emit('created', data)
+      events.emit(operation + 'd', data)
       callback(null, data)
     })
   })
