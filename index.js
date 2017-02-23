@@ -24,6 +24,10 @@ function sync (stack, options, callback) {
   var events = new EventEmitter()
   var operation = options.update ? 'update' : 'create'
 
+  if (operation === 'update') {
+    delete params.DisableRollback
+  }
+
   cfn[operation + 'Stack'](params, function (err, data) {
     if (err) {
       if (err.code === 'AlreadyExistsException') {
