@@ -6,7 +6,10 @@ var CloudFormation = require('aws-sdk/clients/cloudformation')
 module.exports = sync
 
 function sync (stack, options, callback) {
-  options = options || {}
+  if (typeof options === 'function') {
+    callback = options
+    options = {}
+  }
 
   var cfn = new CloudFormation({region: options.region})
 
