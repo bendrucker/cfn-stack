@@ -52,6 +52,8 @@ function sync (stack, options, callback) {
 }
 
 function createParameters (parameters) {
+  if (!parameters) return
+
   return Object.keys(parameters).map(function (key) {
     return {
       ParameterKey: key,
