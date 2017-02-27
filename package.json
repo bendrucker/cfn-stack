@@ -1,6 +1,9 @@
 {
   "name": "cfn-stack",
   "main": "index.js",
+  "bin": {
+    "cfn-stack": "./cli.js"
+  },
   "version": "1.0.0",
   "description": "CLI for launching CloudFormation stacks using local parameter files",
   "license": "MIT",
