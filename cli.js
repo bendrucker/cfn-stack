@@ -47,7 +47,7 @@ function loadStack (stackPath, callback) {
       if (err.code !== 'ENOENT') return callback(err)
     }
 
-    defaults = yaml.safeLoad(defaults)
+    defaults = defaults ? yaml.safeLoad(defaults) : {}
 
     fs.readFile(stackPath, function (err, data) {
       if (err) return callback(err)
