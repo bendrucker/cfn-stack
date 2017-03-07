@@ -17,7 +17,7 @@ function sync (stack, options, callback) {
     StackName: stack.Name,
     Capabilities: stack.Capabilities,
     DisableRollback: options.disableRollback,
-    TemplateBody: stack.Template,
+    TemplateBody: stack.Template.toString(),
     Parameters: createParameters(stack.Parameters)
   }
 
