@@ -82,6 +82,7 @@ function stackName (stackPath) {
   return stackPath
     .replace(/^\.*\//, '')
     .replace(/\.[A-Za-z0-9]+$/, '')
+    .replace(/[\._]/g, '-')
     .split('/')
     .slice(1)
     .reverse()
