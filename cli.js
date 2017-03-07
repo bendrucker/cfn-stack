@@ -52,7 +52,10 @@ function loadStack (stackPath, callback) {
     fs.readFile(stackPath, function (err, data) {
       if (err) return callback(err)
       var stack = yaml.safeLoad(data)
-      Object.assign(stack.Parameters || {}, defaults)
+
+      if (!stack.Parameters) stack.Parameters = {}
+
+      Object.assign(stack.Parameters, defaults)
       Object.assign(stack, {Name: stackName(stackPath)})
       callback(null, stack)
     })
