@@ -3,6 +3,7 @@
 'use strict'
 
 var meow = require('meow')
+var assert = require('assert')
 var child = require('child_process')
 var fs = require('fs')
 var path = require('path')
@@ -43,6 +44,8 @@ waterfall([
 ], console.log)
 
 function loadStack (stackPath, callback) {
+  assert(stackPath, 'stack path is required')
+
   readUp('_defaults.yml', {cwd: path.dirname(stackPath), end: process.cwd()}, function (err, results) {
     if (err) return callback(err)
 
