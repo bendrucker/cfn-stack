@@ -8,6 +8,7 @@ var fs = require('fs')
 var path = require('path')
 var waterfall = require('run-waterfall')
 var yaml = require('js-yaml')
+var readUp = require('read-up')
 var sync = require('./')
 
 var cli = meow(`
@@ -42,12 +43,12 @@ waterfall([
 ], console.log)
 
 function loadStack (stackPath, callback) {
-  fs.readFile(path.resolve(path.dirname(stackPath), '_defaults.yml'), function (err, defaults) {
-    if (err) {
-      if (err.code !== 'ENOENT') return callback(err)
-    }
+  readUp('_defaults.yml', {end: process.cwd()}, function (err, results) {
+    if (err) return callback(err)
 
-    defaults = defaults ? yaml.safeLoad(defaults) : {}
+    var defaults = results.map(String).reverse().reduce(function (acc, data) {
+      return Object.assign(acc, yaml.safeLoad(data))
+    }, {})
 
     fs.readFile(stackPath, function (err, data) {
       if (err) return callback(err)

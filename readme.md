@@ -18,7 +18,7 @@ It is designed to work with stack files organized into a logical folder structur
     └── web.yml
 ```
 
-You'll point `cfn-stack` to an individual stack configuration (e.g. `production/api.yml`). A `_defaults.yml` sibling file can supply default parameters to every stack. 
+You'll point `cfn-stack` to an individual stack configuration (e.g. `production/api.yml`). A `_defaults.yml` file can supply default parameters to every stack. These defaults are read recursively (up to the working directory) so you can apply defaults at multiple levels in the file tree.
 
 Your stack file might look like this:
 
