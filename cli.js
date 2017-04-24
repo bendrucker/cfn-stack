@@ -43,7 +43,7 @@ waterfall([
 ], console.log)
 
 function loadStack (stackPath, callback) {
-  readUp('_defaults.yml', {end: process.cwd()}, function (err, results) {
+  readUp('_defaults.yml', {cwd: path.dirname(stackPath), end: process.cwd()}, function (err, results) {
     if (err) return callback(err)
 
     var defaults = results.map(String).reverse().reduce(function (acc, data) {
