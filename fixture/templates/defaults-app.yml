@@ -1,0 +1,7 @@
+---
+Parameters:
+  Default:
+    Type: String
+    Description: A thing
+Resources:
+  Type: AWS::S3::Bucket

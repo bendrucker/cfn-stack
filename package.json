@@ -14,7 +14,7 @@
     "url": "bendrucker.me"
   },
   "scripts": {
-    "test": "standard && tape test.js"
+    "test": "standard && tape test.js *-test.js"
   },
   "keywords": [
     "cloudformation",
@@ -32,9 +32,14 @@
     "*.js"
   ],
   "dependencies": {
+    "ap": "~0.2.0",
     "aws-sdk": "~2.17.0",
+    "cfn-template-stream": "~1.0.0",
+    "from2-string": "~1.1.0",
     "js-yaml": "~3.8.1",
     "meow": "~3.7.0",
+    "object.pick": "~1.2.0",
+    "read-all-stream": "~3.1.0",
     "read-up": "~1.0.0",
     "run-waterfall": "~1.1.3"
   }
