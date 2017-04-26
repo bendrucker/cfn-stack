@@ -56,7 +56,7 @@ function readStack (stackPath, options, callback) {
     var stack = yaml.safeLoad(data)
 
     callback(null, Object.assign({Parameters: {}}, stack, {
-      Name: stackName(path.relative(options.cwd, stackPath))
+      Name: options.stackName || stackName(path.relative(options.cwd, stackPath))
     }))
   })
 }

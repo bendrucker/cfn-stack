@@ -52,3 +52,18 @@ test('custom loader', function (t) {
     t.deepEqual(stack.Parameters, {Default: 'default-value'}, 'has parameters')
   })
 })
+
+test('custom name', function (t) {
+  t.plan(1)
+
+  var options = {
+    cwd: path.resolve(__dirname, 'fixture'),
+    templateDirectory: path.resolve(__dirname, 'fixture', 'templates'),
+    stackName: 'custom-stack-name'
+  }
+
+  stack.load('./stacks/simple/app.yml', options, function (err, stack) {
+    if (err) return t.end(err)
+    t.equal(stack.Name, 'custom-stack-name')
+  })
+})

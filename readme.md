@@ -74,6 +74,16 @@ cfnStack(stack, {region: 'us-east-1'}, callback)
 
 Creates a live CloudFormation stack using the configuration specified in the `stack` YAML file. 
 
+##### --stack-name
+
+Type: `string`
+
+A custom name to use for the stack. If omitted, a stack name will be generated using the stack file path.
+
+```sh
+cfn-stack stacks/production/api.yml --stack-name 'my-custom-name'
+```
+
 ##### --load
 
 Type: `string`
