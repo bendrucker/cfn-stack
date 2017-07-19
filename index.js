@@ -2,6 +2,7 @@
 
 var EventEmitter = require('events')
 var CloudFormation = require('aws-sdk/clients/cloudformation')
+var array = require('cast-array')
 
 module.exports = sync
 
@@ -57,7 +58,11 @@ function createParameters (parameters) {
   return Object.keys(parameters).map(function (key) {
     return {
       ParameterKey: key,
-      ParameterValue: parameters[key]
+      ParameterValue: stringify(parameters[key])
     }
   })
+}
+
+function stringify (value) {
+  return array(value).map(String).join(',')
 }

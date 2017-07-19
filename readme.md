@@ -152,7 +152,7 @@ A JSON or YAML CloudFormation template string.
 Type: `object`  
 Default: `undefined`
 
-The stack parameters expressed as an object of strings/numbers.
+The stack parameters expressed as an object of strings/numbers/arrays. All values will be coerced to strings (required by CloudFormation). Arrays will be converted to comma delimited lists.
 
 ##### options
 
