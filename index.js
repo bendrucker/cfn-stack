@@ -39,14 +39,7 @@ function sync (stack, options, callback) {
     }
 
     events.emit(operation, data)
-
-    var wait = ['stack', options.update ? 'Update' : 'Create', 'Complete'].join('')
-    cfn.waitFor(wait, {StackName: data.StackId}, function (err, data) {
-      if (err) return callback(err)
-      data = data.Stacks[0]
-      events.emit(operation + 'd', data)
-      callback(null, data)
-    })
+    callback()
   })
 
   return events

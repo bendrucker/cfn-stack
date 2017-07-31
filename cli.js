@@ -37,8 +37,13 @@ stack.load(cli.input[0], options, function (err, stack) {
     assert.ifError(err)
     console.log(JSON.stringify(data, null, 2))
   })
-  .on('create', (stack) => console.log(`Created: ${stack.StackId}`))
-  .on('created', (stack) => console.log(`Create complete: ${stack.StackId}`))
-  .on('update', (stack) => console.log(`Update: ${stack.StackId}`))
-  .on('updated', (stack) => console.log(`Update complete: ${stack.StackId}`))
+  .on('create', log.bind(null, 'create'))
+  .on('updated', log.bind(null, 'create'))
 })
+
+function log (operation, data) {
+  console.log(JSON.stringify({
+    operation,
+    id: data.StackId
+  }))
+}
