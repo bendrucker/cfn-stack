@@ -35,10 +35,9 @@ stack.load(cli.input[0], options, function (err, stack) {
 
   sync(stack, options, function (err, data) {
     assert.ifError(err)
-    console.log(JSON.stringify(data, null, 2))
   })
   .on('create', log.bind(null, 'create'))
-  .on('updated', log.bind(null, 'create'))
+  .on('update', log.bind(null, 'update'))
 })
 
 function log (operation, data) {
