@@ -16,7 +16,7 @@ test('simple', function (t) {
     if (err) return t.end(err)
     t.equal(stack.Name, 'app-simple')
     t.ok(stack.Template.indexOf('Resources') >= 0, 'has full template string')
-    t.deepEqual(stack.Parameters, {Key: 'value'}, 'has parameters')
+    t.deepEqual(stack.Parameters, { Key: 'value' }, 'has parameters')
   })
 })
 
@@ -32,7 +32,7 @@ test('defaults', function (t) {
     if (err) return t.end(err)
     t.equal(stack.Name, 'app-defaults')
     t.ok(stack.Template.indexOf('Resources') >= 0, 'has full template string')
-    t.deepEqual(stack.Parameters, {Default: 'default-value'}, 'has parameters')
+    t.deepEqual(stack.Parameters, { Default: 'default-value' }, 'has parameters')
   })
 })
 
@@ -49,7 +49,7 @@ test('custom loader', function (t) {
     if (err) return t.end(err)
     t.equal(stack.Name, 'app-defaults')
     t.ok(stack.Template.indexOf('Resources') >= 0, 'has full template string')
-    t.deepEqual(stack.Parameters, {Default: 'default-value'}, 'has parameters')
+    t.deepEqual(stack.Parameters, { Default: 'default-value' }, 'has parameters')
   })
 })
 

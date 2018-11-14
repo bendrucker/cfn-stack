@@ -12,7 +12,7 @@ function sync (stack, options, callback) {
     options = {}
   }
 
-  var cfn = new CloudFormation({region: options.region})
+  var cfn = new CloudFormation({ region: options.region })
 
   var params = {
     StackName: stack.Name,
@@ -32,7 +32,7 @@ function sync (stack, options, callback) {
   cfn[operation + 'Stack'](params, function (err, data) {
     if (err) {
       if (err.code === 'AlreadyExistsException') {
-        return sync(stack, Object.assign({update: true}, options), callback)
+        return sync(stack, Object.assign({ update: true }, options), callback)
       }
 
       return callback(err)

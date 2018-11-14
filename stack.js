@@ -12,7 +12,7 @@ var fromString = require('from2-string')
 var cfnTemplate = require('cfn-template-stream')
 var pick = require('object.pick')
 
-module.exports = {load}
+module.exports = { load }
 
 function load (stackPath, options, callback) {
   assert(stackPath, 'stack path is required')
@@ -37,7 +37,7 @@ function readDefaults (stackPath, options, callback) {
   var cwd = path.dirname(stackPath)
   var end = options.cwd
 
-  readUp('_defaults.yml', {cwd, end}, function (err, results) {
+  readUp('_defaults.yml', { cwd, end }, function (err, results) {
     if (err) return callback(err)
     callback(null, parseDefaults(results))
   })
@@ -55,7 +55,7 @@ function readStack (stackPath, options, callback) {
 
     var stack = yaml.safeLoad(data)
 
-    callback(null, Object.assign({Parameters: {}}, stack, {
+    callback(null, Object.assign({ Parameters: {} }, stack, {
       Name: options.stackName || stackName(path.relative(options.cwd, stackPath))
     }))
   })
@@ -65,7 +65,7 @@ function stackName (stackPath) {
   return stackPath
     .replace(/^\.*\//, '')
     .replace(/\.[A-Za-z0-9]+$/, '')
-    .replace(/[\._]/g, '-')
+    .replace(/[._]/g, '-')
     .split('/')
     .slice(1)
     .reverse()
@@ -83,7 +83,7 @@ function readTemplate (stack, options, callback) {
   if (!exec) return fs.readFile(templatePath, onData)
 
   child.exec(exec.replace(/\$0/g, templatePath), function (err, stdout, stderr) {
-    if (err) return callback(Object.assign(err, {stderr}))
+    if (err) return callback(Object.assign(err, { stderr }))
     onData(null, stdout)
   })
 
