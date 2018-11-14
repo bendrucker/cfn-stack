@@ -36,8 +36,8 @@ stack.load(cli.input[0], options, function (err, stack) {
   sync(stack, options, function (err, data) {
     assert.ifError(err)
   })
-  .on('create', log.bind(null, 'create'))
-  .on('update', log.bind(null, 'update'))
+    .on('create', log.bind(null, 'create'))
+    .on('update', log.bind(null, 'update'))
 })
 
 function log (operation, data) {

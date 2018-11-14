@@ -6,7 +6,7 @@ var cuid = require('cuid')
 var CloudFormation = require('aws-sdk/clients/cloudformation')
 var cfnStack = require('./')
 
-var cfn = new CloudFormation({region: 'us-east-1'})
+var cfn = new CloudFormation({ region: 'us-east-1' })
 
 var template = JSON.stringify({
   AWSTemplateFormatVersion: '2010-09-09',
@@ -27,7 +27,7 @@ var template = JSON.stringify({
       Type: 'AWS::S3::Bucket',
       Properties: {
         BucketName: {
-          'Fn::Sub': '${BucketPrefix}-${AWS::StackName}-${BucketSuffix}'
+          'Fn::Sub': '${BucketPrefix}-${AWS::StackName}-${BucketSuffix}' // eslint-disable-line no-template-curly-in-string
         }
       }
     }
@@ -53,7 +53,7 @@ test('create', function (t) {
   ], t.end)
 
   function create (callback) {
-    var options = {region: 'us-east-1'}
+    var options = { region: 'us-east-1' }
 
     cfnStack({
       Name: name,
@@ -65,7 +65,7 @@ test('create', function (t) {
   }
 
   function wait (callback) {
-    cfn.waitFor('stackCreateComplete', {StackName: name}, callback)
+    cfn.waitFor('stackCreateComplete', { StackName: name }, callback)
   }
 
   function validate (callback) {
@@ -87,7 +87,7 @@ test('create', function (t) {
   }
 
   function destroy (callback) {
-    cfn.deleteStack({StackName: name}, callback)
+    cfn.deleteStack({ StackName: name }, callback)
   }
 })
 
@@ -104,7 +104,7 @@ test('update', function (t) {
   ], t.end)
 
   function create (callback) {
-    var options = {region: 'us-east-1'}
+    var options = { region: 'us-east-1' }
 
     cfnStack({
       Name: name,
@@ -116,11 +116,11 @@ test('update', function (t) {
   }
 
   function awaitCreate (callback) {
-    cfn.waitFor('stackCreateComplete', {StackName: name}, callback)
+    cfn.waitFor('stackCreateComplete', { StackName: name }, callback)
   }
 
   function update (callback) {
-    var options = {region: 'us-east-1'}
+    var options = { region: 'us-east-1' }
 
     cfnStack({
       Name: name,
@@ -133,7 +133,7 @@ test('update', function (t) {
   }
 
   function awaitUpdate (callback) {
-    cfn.waitFor('stackUpdateComplete', {StackName: name}, callback)
+    cfn.waitFor('stackUpdateComplete', { StackName: name }, callback)
   }
 
   function validate (callback) {
@@ -155,6 +155,6 @@ test('update', function (t) {
   }
 
   function destroy (callback) {
-    cfn.deleteStack({StackName: name}, callback)
+    cfn.deleteStack({ StackName: name }, callback)
   }
 })

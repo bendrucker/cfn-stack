@@ -1,4 +1,4 @@
-# cfn-stack [![Build Status](https://travis-ci.org/bendrucker/cfn-stack.svg?branch=master)](https://travis-ci.org/bendrucker/cfn-stack)
+# cfn-stack [![Build Status](https://travis-ci.org/bendrucker/cfn-stack.svg?branch=master)](https://travis-ci.org/bendrucker/cfn-stack) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/cfn-stack.svg)](https://greenkeeper.io/)
 
 > CLI for launching CloudFormation stacks using local parameter files
 
