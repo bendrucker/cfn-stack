@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "ap": "~0.2.0",
-    "aws-sdk": "^2.355.0",
+    "aws-sdk": "^2.450.0",
     "cast-array": "~1.0.1",
     "cfn-template-stream": "~1.0.0",
     "from2-string": "~1.1.0",
