@@ -37,7 +37,7 @@
     "cast-array": "~1.0.1",
     "cfn-template-stream": "~1.0.0",
     "from2-string": "~1.1.0",
-    "js-yaml": "~3.13.0",
+    "js-yaml": "~3.14.0",
     "meow": "~5.0.0",
     "object.pick": "~1.3.0",
     "read-up": "~1.0.0",
