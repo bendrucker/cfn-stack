@@ -45,7 +45,7 @@ function readDefaults (stackPath, options, callback) {
 
 function parseDefaults (results) {
   return results.map(String).reverse().reduce(function (acc, data) {
-    return Object.assign(acc, yaml.safeLoad(data))
+    return Object.assign(acc, yaml.load(data))
   }, {})
 }
 
@@ -53,7 +53,7 @@ function readStack (stackPath, options, callback) {
   fs.readFile(stackPath, function (err, data) {
     if (err) return callback(err)
 
-    var stack = yaml.safeLoad(data)
+    var stack = yaml.load(data)
 
     callback(null, Object.assign({ Parameters: {} }, stack, {
       Name: options.stackName || stackName(path.relative(options.cwd, stackPath))
