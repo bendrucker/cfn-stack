@@ -23,7 +23,7 @@
     "api"
   ],
   "devDependencies": {
-    "cuid": "^2.1.4",
+    "cuid": "^3.0.0",
     "run-series": "^1.1.4",
     "standard": "^16.0.0",
     "tape": "^5.0.0"
